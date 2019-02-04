@@ -1,0 +1,25 @@
+language: python
+matrix:
+  include:
+    - python: "3.6"
+      dist: trusty
+      sudo: true
+    - python: "3.7"
+      dist: xenial
+      sudo: true
+
+addons:
+  postgresql: "9.6"
+
+before_install:
+  - pip install pipenv
+  - npm install -g npm@"^6.4.0"
+
+install:
+  - pipenv install --dev --deploy
+  - npm ci
+  
+before_script:
+  - pipenv check
+  - black . --check --exclude node_modules/
+  - flake8 --exclude node_modules/ || true
