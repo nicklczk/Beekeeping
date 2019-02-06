@@ -19,6 +19,5 @@ install:
   - pipenv install --dev --deploy
   
 before_script:
-  - pipenv check
   - black . --check --exclude node_modules/
   - flake8 --exclude node_modules/ || true
