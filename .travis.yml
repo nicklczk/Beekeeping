@@ -20,3 +20,6 @@ install:
   
 before_script:
   - black . --check --exclude node_modules/
+
+script: 
+  - pytest
