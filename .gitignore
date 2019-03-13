@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+package-lock.json
+.vscode/settings.json
+Beekeeping/settings.py
