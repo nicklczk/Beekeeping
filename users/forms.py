@@ -9,7 +9,7 @@ class BeeUserCreationForm(UserCreationForm):
         fields = ('username', 'email')
 
 class BeeUserChangeForm(UserChangeForm):
-    
+
     class Meta(UserChangeForm):
         model = BeeUser
         fields = ('username', 'email')

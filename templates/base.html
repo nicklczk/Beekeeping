@@ -1,14 +1,14 @@
 <!-- templates/base.html -->
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
   <meta charset="utf-8">
-  {% load static %}
-  <link rel="stylesheet" type="css" href="{% static 'css/bootstrap.min.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{% static 'users/css/bootstrap.min.css' %}">
   <title>{% block title %}Beekeep{% endblock %}</title>
 </head>
 <body>
-  <main>
     {% block content %}
     {% endblock %}
 </body>
