@@ -1,10 +1,10 @@
 <!-- templates/home.html -->
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Beekeep</title>
+  {% load static %}
   <link rel="stylesheet" type="css" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
@@ -15,7 +15,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar=nav">
         {% if user.is_authenticated %}
-          <li class="nav-item">Hi {{ user.username }}</li>
+          <li class="nav-item">
+            <!-- TODO: Add account app and link to it from here -->
+            {{ user.username }}.
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
