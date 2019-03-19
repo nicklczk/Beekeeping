@@ -9,7 +9,13 @@
   <title>{% block title %}Beekeep{% endblock %}</title>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+  <div class="container">
+    <div class="row">
+      <div class="center-block col-md-4 col-lg-5" style="float: none;">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
 </body>
 </html>
