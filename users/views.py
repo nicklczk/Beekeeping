@@ -17,8 +17,12 @@ def profile(request, username):
         print("ERROR: not authenticated")
         return redirect("login")
     else:
-        print(request.user.is_authenticated)
-        return HttpResponse(request.user.username)
+        user_info = {
+            "username": request.user.username,
+            "email": request.user.email,
+        }
+
+        return render(request, "profile_base.html", user_info)
 
 
 def signup(request):
