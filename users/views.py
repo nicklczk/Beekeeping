@@ -10,26 +10,27 @@ from .forms import BeeUserCreationForm
 def login(request):
     return HttpResponse("Hello, you're at the login page.")
 
+
 def signup(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = BeeUserCreationForm(request.POST)
 
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password')
+            username = form.cleaned_data.get("username")
+            raw_password = form.cleaned_data.get("password")
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
-    
+            return redirect("home")
+
     else:
         form = BeeUserCreationForm()
-    
-    return render(request, 'signup.html', {"form": form})
-        
+
+    return render(request, "signup.html", {"form": form})
+
 
 class SignUp(generic.CreateView):
 
     form_class = BeeUserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'signup.html'
+    success_url = reverse_lazy("login")
+    template_name = "signup.html"
