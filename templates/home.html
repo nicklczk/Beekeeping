@@ -19,8 +19,7 @@
             <ul class="nav nav-pills navbar-nav">
               {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <!-- TODO: Add account app and link to it from here -->
-                  <a class="nav-link" href="#">{{ user.username }}</a>
+                  <a class="nav-link" href="{% url 'profile' user.username %}">{{ user.username }}</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'logout' %}">Logout</a>

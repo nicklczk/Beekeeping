@@ -6,9 +6,19 @@ from django.contrib.auth import login, authenticate
 
 from .forms import BeeUserCreationForm
 
+
 # Create your views here.
 def login(request):
     return HttpResponse("Hello, you're at the login page.")
+
+
+def profile(request, username):
+    if not request.user.is_authenticated:
+        print("ERROR: not authenticated")
+        return redirect("login")
+    else:
+        print(request.user.is_authenticated)
+        return HttpResponse(request.user.username)
 
 
 def signup(request):
