@@ -13,15 +13,14 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="nav navbar navbar-expand-lg navbar-light bg-light">
          <a class="navbar-brand" href="#">Beekeep</a>
-
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+            <ul class="nav nav-pills navbar-nav">
               {% if user.is_authenticated %}
                 <li class="nav-item">
                   <!-- TODO: Add account app and link to it from here -->
-                  {{ user.username }}
+                  <a class="nav-link" href="#">{{ user.username }}</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'logout' %}">Logout</a>
