@@ -1,4 +1,4 @@
-<!-- templates/home.html -->
+<!-- templates/viewhives.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +27,15 @@
       </nav>
     </div>
     <div class="row">
-      <div class="center-block col-lg-7" style="float: none;">
-        <p> Hi, {{ first_name }} {{ last_name }}.</p>
-        <p>Your username is {{ username }}.</p>
-        <p>Your email is current set to: {{ email }}.</p>
-      </div>
+      <p> Hive Name: {{ hive_name }} </p>
+      <p> Creation date: {{ creation_date }} </p>
+    </div>
+    <div style="" class="button-box" >
+
+    <a class="btn btn-primary" href="{% url 'viewhives' username%}">Return</a>
+    <a class="btn btn-primary" href="{% url 'deletehive' username pk%}">Delete</a>
+    <a class="btn btn-primary" href="{% url 'edithive' username pk%}">Edit</a>
+
     </div>
   </div>
 </body>

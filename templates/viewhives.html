@@ -1,4 +1,4 @@
-<!-- templates/home.html -->
+<!-- templates/viewhives.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +27,19 @@
       </nav>
     </div>
     <div class="row">
-      <div class="center-block col-lg-7" style="float: none;">
-        <p> Hi, {{ first_name }} {{ last_name }}.</p>
-        <p>Your username is {{ username }}.</p>
-        <p>Your email is current set to: {{ email }}.</p>
-      </div>
+      {% for field in hives %}
+        <p>
+          <a href="/hives/{{ username }}/{{ field.pk }}"">{{ field }}</a>
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
+    </div>
+    <div style="" class="button-box" >
+
+    <a class="btn btn-primary" href="{% url 'createhive' username%}">Create Hive</a>
+
     </div>
   </div>
 </body>
