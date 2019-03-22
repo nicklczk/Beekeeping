@@ -1,4 +1,4 @@
-<!-- templates/createhive.html -->
+<!-- templates/createevent.html -->
 {% extends "base.html" %}
 
 {% load staticfiles %}
@@ -6,11 +6,11 @@
 
 
 {% block title %}
-Create Hive
+Create Timeline Event
 {% endblock title %}
 
 {% block content %}
-<h2>Create Hive</h2>
+<h2>Create Timeline Event</h2>
 <form method="POST">
   {% csrf_token %}
   {% for field in form %}
@@ -22,6 +22,6 @@ Create Hive
       {% endfor %}
     </p>
   {% endfor %}
-  <button type="submit">Create Hive</button>
+  <button type="submit">Create Timeline Event</button>
 </form>
 {% endblock content %}

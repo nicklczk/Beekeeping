@@ -1,4 +1,4 @@
-<!-- templates/signup.html -->
+<!-- templates/edithive.html -->
 {% extends "base.html" %}
 
 {% load staticfiles %}
@@ -23,6 +23,6 @@ Create Hive
     </p>
   {% endfor %}
   <button type="submit">Save Changes</button>
-  <a class="btn btn-primary" href="{% url 'viewhives' username%}">Discard Changes</a>
+  <a class="btn btn-primary" href="{% url 'viewhive' username hive_pk%}">Discard Changes</a>
 </form>
 {% endblock content %}

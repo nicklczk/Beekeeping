@@ -1,4 +1,4 @@
-<!-- templates/viewhives.html -->
+<!-- templates/viewhive.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +29,22 @@
     <div class="row">
       <p> Hive Name: {{ hive_name }} </p>
       <p> Creation date: {{ creation_date }} </p>
+      <p> Timeline Events: </p>
+      {% for entry in entries %}
+        <p>
+          <a href="{% url 'viewtimelineentry' username pk entry.pk%}">{{ entry }}</a>
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
     </div>
     <div style="" class="button-box" >
 
     <a class="btn btn-primary" href="{% url 'viewhives' username%}">Return</a>
     <a class="btn btn-primary" href="{% url 'deletehive' username pk%}">Delete</a>
     <a class="btn btn-primary" href="{% url 'edithive' username pk%}">Edit</a>
+    <a class="btn btn-primary" href="{% url 'addtimelineentry' username pk%}">Add Timeline Event</a>
 
     </div>
   </div>
