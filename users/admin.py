@@ -7,10 +7,12 @@ from .models import BeeUser
 
 # Register your models here.
 
+
 class BeeUserAdmin(UserAdmin):
     add_form = BeeUserCreationForm
     form = BeeUserChangeForm
     model = BeeUser
-    list_display = ['email', 'username',]
+    list_display = ["email", "username"]
+
 
 admin.site.register(BeeUser, BeeUserAdmin)
