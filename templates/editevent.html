@@ -1,0 +1,28 @@
+<!-- templates/editevent.html -->
+{% extends "base.html" %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/bootstrap.min.css' %}">
+
+
+{% block title %}
+Edit Timeline Event
+{% endblock title %}
+
+{% block content %}
+<h2>Edit Timeline Event</h2>
+<form method="POST">
+  {% csrf_token %}
+  {% for field in form %}
+    <p>
+      {{ field.label_tag }}<br>
+      {{ field }}
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+    </p>
+  {% endfor %}
+  <button type="submit">Save Changes</button>
+  <a class="btn btn-primary" href="{% url 'viewtimelineentry' username hive_pk timeline_pk%}">Discard Changes</a>
+</form>
+{% endblock content %}

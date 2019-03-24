@@ -1,4 +1,4 @@
-<!-- templates/home.html -->
+<!-- templates/viewtimelineevent.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,12 +27,21 @@
       </nav>
     </div>
     <div class="row">
-      <div class="center-block col-lg-7" style="float: none;">
-        <p> Hi, {{ first_name }} {{ last_name }}</p>
-        <p>Your username is {{ username }}</p>
-        <p>Your email is current set to: {{ email }}</p>
-        <p>Your zipcode is set to: {{ zipcode }}</p>
-      </div>
+      <p> Hive Name: {{ hive_name }} </p>
+      <p> Timeline Date: {{ timeline_date }} </p>
+      <p> Brood Cells: {{ brood_cells }} </p>
+      <p> Honey Racks: {{ honey_racks }} </p>
+      <p> Hive Size: {{ hive_size }} </p>
+      <p> Queen Spotted: {{ queen_spotted }} </p>
+      <p> Pests/Disease: {{ pests_disease }} </p>
+      <p> Plant Life: {{ plant_life }} </p>
+    </div>
+    <div style="" class="button-box" >
+
+    <a class="btn btn-primary" href="{% url 'viewhive' username hive_pk%}">Return</a>
+    <a class="btn btn-primary" href="{% url 'deleteevent' username hive_pk timeline_pk%}">Delete</a>
+    <a class="btn btn-primary" href="{% url 'editevent' username hive_pk timeline_pk%}">Edit</a>
+
     </div>
   </div>
 </body>
