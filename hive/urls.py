@@ -16,4 +16,5 @@ urlpatterns = [
     path("<username>/<hive_pk>/<timeline_pk>", views.viewtimelineentry, name="viewtimelineentry"),
     path("<username>/<hive_pk>/<timeline_pk>/delete", views.deleteevent, name="deleteevent"),
     path("<username>/<hive_pk>/<timeline_pk>/edit", views.editevent, name="editevent"),
+    path("<username>/<hive_pk>/<data_type>/graphdata", views.graphdata, name="graphdata"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

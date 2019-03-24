@@ -1,8 +1,67 @@
 from django.shortcuts import render, redirect
 import datetime
+import operator
+from matplotlib import pylab
+import matplotlib.image as mpimg
+from pylab import *
+import PIL, PIL.Image
 
 from .models import Hive, HiveTimeline
 from .forms import HiveCreationForm, EntryCreationForm
+
+def graphdata(request, username, hive_pk, data_type):
+    try:
+        entries = HiveTimeline.objects.filter(hive_key=hive_pk)
+        entries = sorted(entries, key=operator.attrgetter('timeline_date'))
+    except HiveTimeline.DoesNotExist:
+        entries = []   
+    x = []
+    y = []
+    x_label=""
+    if (data_type == "brood_cells"):
+        for entry in entries:
+            x.append(entry.timeline_date)
+            y.append(entry.brood_cells)
+            x_label = "Brood Cells"
+    if (data_type == "honey_racks"):
+        for entry in entries:
+            x.append(entry.timeline_date)
+            y.append(entry.honey_racks)
+            x_label = "Honey Racks"    
+    if (data_type == "hive_size"):
+        for entry in entries:
+            x.append(entry.timeline_date)
+            y.append(entry.hive_size)
+            x_label = "Hive Size"    
+    if (data_type == "queen_spotted"):
+        for entry in entries:
+            x.append(entry.timeline_date)
+            y.append(entry.queen_spotted)
+            x_label = "Queen Spotted"    
+    if (data_type == "pests_disease"):
+        for entry in entries:
+            x.append(entry.timeline_date)
+            y.append(entry.pests_disease)
+            x_label = "Pests/Disease"       
+    if (data_type == "plant_life"):
+        for entry in entries:
+            x.append(entry.timeline_date)
+            y.append(entry.plant_life)
+            x_label = "Plant Life"            
+    plt.plot(x,y)
+    
+    ylabel(x_label)
+    xlabel('Time')
+    title(x_label + " vs Time")
+    grid(True)
+    canvas = pylab.get_current_fig_manager().canvas
+    canvas.draw()
+    pilImage = PIL.Image.frombytes("RGB", canvas.get_width_height(), canvas.tostring_rgb())
+    pilImage.show()
+    plt.close()
+    return redirect("viewhive", username, hive_pk)
+
+
 # Create your views here.
 def viewhives(request, username):
     if not request.user.is_authenticated:
@@ -43,6 +102,7 @@ def viewhive(request, username, hive_pk):
         hive = Hive.objects.get(pk=hive_pk)
         try:
             entries = HiveTimeline.objects.filter(hive_key=hive_pk)
+            entries = sorted(entries, key=operator.attrgetter('timeline_date'))
         except HiveTimeline.DoesNotExist:
             entries = []           
         info = {
