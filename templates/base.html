@@ -1,15 +1,71 @@
 <!-- templates/base.html -->
 <!DOCTYPE html>
+{% load static %}
+
 <html>
+<title>Beekeep</title>
 <head>
-  <meta charset="utf-8">
-  {% load static %}
-  <link rel="stylesheet" type="css" href="{% static 'css/bootstrap.min.css' %}">
-  <title>{% block title %}Beekeep{% endblock %}</title>
+     <link rel="stylesheet" type="css" href="{% static 'base.css' %}">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" type="css" href="{% static 'css/bootstrap.min.css' %}">
+     <meta charset="UTF-8">
 </head>
-<body>
-  <main>
-    {% block content %}
-    {% endblock %}
-</body>
+<div class = "wrapper">
+    <div class="topnav">
+        <a href="{% url 'home' %}">Beekeep</a>
+        <a href="{% url 'home' %}">Weather</a>
+        <a href="{% url 'home' %}">Data Visulazation </a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
+        
+    </div>
+
+    </br>
+            
+    <body class="w3-content" style="max-width:1200px">
+        <!-- First Grid: Logo & About -->
+        <div class="w3-row">
+            <div class="w3-half w3-container w3-xlarge w3-text-grey">
+                <head>
+                    <meta charset="utf-8">
+                    <title>{% block title %}Beekeep{% endblock %}</title>
+                </head>
+                <body>
+                    {% block content %}
+                    {% endblock %}
+                </body>
+        </div>
+        </div>
+    </body>
+    <div class='push'></div>
+    <!-- Footer -->
+    <div class="page-footer">
+        <div class="w3-third w3-container w3-black w3-large" style="height:250px">
+            <h2>Contact Info</h2>
+            <p><i class="fa fa-map-marker" style="width:30px"></i> Chicago, US</p>
+            <p><i class="fa fa-envelope" style="width:30px"> </i> Email: beekeep@gmail.com</p>
+        </div>
+        <div class="w3-third w3-center w3-large w3-dark-grey w3-text-white" style="height:250px">
+            <h2>Contact Us</h2>
+            <p>If you have an idea.</p>
+            <p>What are you waiting for?</p>
+        </div>
+        <div class="w3-third w3-center w3-large w3-grey w3-text-white" style="height:250px">
+            <h2>Like Us</h2>
+            <i class="w3-xlarge fa fa-facebook-official"></i><br>
+            <i class="w3-xlarge fa fa-pinterest-p"></i><br>
+            <i class="w3-xlarge fa fa-twitter"></i><br>
+            <i class="w3-xlarge fa fa-flickr"></i><br>
+            <i class="w3-xlarge fa fa-linkedin"></i>
+        </div>
+    </div>
+</div>
+
 </html>
+
+
