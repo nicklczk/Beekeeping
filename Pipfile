@@ -9,6 +9,7 @@ django = "*"
 "psycopg2" = "*"
 matplotlib = "*"
 pillow = "*"
+requests = "*"
 
 [dev-packages]
 flake8 = "*"
