@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 import datetime
 import operator
+import matplotlib
+matplotlib.use('Agg')
 from matplotlib import pylab
 import matplotlib.image as mpimg
 from pylab import *
@@ -10,6 +12,7 @@ from .models import Hive, HiveTimeline
 from .forms import HiveCreationForm, EntryCreationForm
 
 def graphdata(request, username, hive_pk, data_type):
+    plt.close()
     try:
         entries = HiveTimeline.objects.filter(hive_key=hive_pk)
         entries = sorted(entries, key=operator.attrgetter('timeline_date'))
