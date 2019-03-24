@@ -11,6 +11,7 @@ class BeeUserCreationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False)
     last_name = forms.CharField(max_length=30, required=False)
     email = forms.EmailField(max_length=254, required=True)
+    zipcode = forms.IntegerField(required=True)
 
     class Meta(UserCreationForm):
         model = BeeUser
@@ -18,6 +19,7 @@ class BeeUserCreationForm(UserCreationForm):
             "username",
             "first_name",
             "last_name",
+            "zipcode",
             "email",
             "password1",
             "password2",

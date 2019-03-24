@@ -22,6 +22,7 @@ def profile(request, username):
             "email": request.user.email,
             "first_name": request.user.first_name,
             "last_name": request.user.last_name,
+            "zipcode": request.user.zipcode,
         }
 
         return render(request, "profile_base.html", user_info)

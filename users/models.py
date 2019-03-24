@@ -6,5 +6,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class BeeUser(AbstractUser):
+    zipcode = models.SmallIntegerField(default="00000")
+
     def __str__(self):
         return self.email
