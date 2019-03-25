@@ -6,5 +6,5 @@ class CityForm(ModelForm):
         model = City
         fields = ['name']
         widgets = {
-            'name': TextInput(attrs={'class' : 'input', 'placeholder' : 'City Name'}),
+            'name': TextInput(attrs={'class' : 'input', 'placeholder' : 'Zip Code'}),
         } #updates the input class to have the correct Bulma class and placeholder
