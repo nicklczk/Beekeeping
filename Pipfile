@@ -5,11 +5,13 @@ name = "pypi"
 
 [packages]
 django = "*"
-black = "*"
 "psycopg2-binary" = "*"
 "psycopg2" = "*"
+matplotlib = "*"
+pillow = "*"
 
 [dev-packages]
+flake8 = "*"
 
 [requires]
 python_version = "3.7"

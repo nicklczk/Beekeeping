@@ -1,0 +1,63 @@
+<!-- templates/viewhive.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Beekeep</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'home/css/bootstrap.min.css' %}">
+</head>
+<body>
+  <main>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="nav navbar center-block col-lg-7" style="float: none;">
+        <a class="navbar-brand" href="{% url 'home' %}">Beekeep</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'viewhives' username%}">View Hives</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="row">
+      <p> Hive Name: {{ hive_name }} </p>
+      <p> Creation date: {{ creation_date }} </p>
+      <p> Timeline Events: </p>
+      {% for entry in entries %}
+        <p>
+          <a href="{% url 'viewtimelineentry' username pk entry.pk%}">{{ entry }}</a>
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
+    </div>
+    <div style="" class="button-box" >
+
+    <a class="btn btn-primary" href="{% url 'viewhives' username%}">Return</a>
+    <a class="btn btn-primary" href="{% url 'deletehive' username pk%}">Delete</a>
+    <a class="btn btn-primary" href="{% url 'edithive' username pk%}">Edit</a>
+    <a class="btn btn-primary" href="{% url 'addtimelineentry' username pk%}">Add Timeline Event</a>
+
+    </div>
+    <div style="" class="button-box" >
+
+    <a class="btn btn-primary" href="{% url 'graphdata' username pk 'brood_cells'%}">Graph Brood Cells</a>
+    <a class="btn btn-primary" href="{% url 'graphdata' username pk 'honey_racks'%}">Graph Honey Racks</a>
+    <a class="btn btn-primary" href="{% url 'graphdata' username pk 'hive_size'%}">Graph Hive Size</a>
+    <a class="btn btn-primary" href="{% url 'graphdata' username pk 'queen_spotted'%}">Graph Queen Spotted</a>
+    <a class="btn btn-primary" href="{% url 'graphdata' username pk 'pests_disease'%}">Graph Pests/Disease</a>
+    <a class="btn btn-primary" href="{% url 'graphdata' username pk 'plant_life'%}">Graph Plant Life</a>
+
+
+    </div>
+  </div>
+</body>
+</html>

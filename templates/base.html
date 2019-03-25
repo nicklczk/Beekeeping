@@ -1,10 +1,15 @@
 <!-- templates/base.html -->
 <!DOCTYPE html>
+<<<<<<< HEAD
 {% load static %}
 
+=======
+{% load staticfiles %}
+>>>>>>> master
 <html>
 <title>Beekeep</title>
 <head>
+<<<<<<< HEAD
      <link rel="stylesheet" type="css" href="{% static 'base.css' %}">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -44,6 +49,22 @@
     </body>
     </div>
 </br>
+=======
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{% static 'users/css/bootstrap.min.css' %}">
+  <title>{% block title %}Beekeep{% endblock %}</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="center-block col-md-4 col-lg-6" style="float: none;">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+>>>>>>> master
 </body>
 
 </html>
