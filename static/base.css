@@ -25,15 +25,3 @@
   background-color: #4CAF50;
   color: white;
 }
-.wrapper {
-  min-height: 100%;
-
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -100px;
-}
-.page-footer,
-.push {
-  height: 100px;
-}
-
