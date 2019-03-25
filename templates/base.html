@@ -21,8 +21,8 @@
     <div class="topnav">
         <a href="{% url 'home' %}">Beekeep</a>
         {% if user.is_authenticated %}
-        <a href="{% url 'home' %}">Weather</a>
-        <a href="{% url 'viewhive' %}">Data Visulazation </a>
+        <a href="{% url 'viewhives' username%}">View Hives </a>
+        <a href="{'weather'}">Weather</a>
         <a href="{% url 'logout' %}">logout</a>
         {% else %}
         <a href="{% url 'login' %}">Login</a>
