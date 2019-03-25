@@ -3,20 +3,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Beekeep</title>
-   <link rel="stylesheet" type="css" href="{% static 'css/bootstrap.min.css' %}">
-<link rel="stylesheet" type="css" href="{% static 'base.css' %}">
+  <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="css" href="{% static 'home/css/bootstrap.min.css' %}">
+  <meta charset="UTF-8">
 </head>
     <div>
-        <div id="topnav" style="background-color: #333;" "overflow: hidden;">
+        <div class="topnav">
             <a href="{% url 'home' %}">Beekeep</a>
             {% if user.is_authenticated %}
             <a href="{% url 'home' %}">Weather</a>
-            <a href="{% url 'home' %}">Data Visulazation </a>
+            <a href="{% url 'viewhive' %}">Data Visulazation </a>
             <a href="{% url 'logout' %}">logout</a>
             {% else %}
             <a href="{% url 'login' %}">Login</a>
