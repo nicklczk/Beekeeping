@@ -1,6 +1,28 @@
 <!-- templates/signup.html -->
 {% extends "base.html" %}
 
+<<<<<<< HEAD
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <main>
+            {% block title %}
+            Sign Up
+            {% endblock title %}
+            
+            {% block content %}
+            <h2>Sign Up</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sign up</button>
+            </form>
+            {% endblock content %}
+        </main>
+    </body>
+</html>
+=======
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'users/css/bootstrap.min.css' %}">
 
@@ -25,3 +47,4 @@ Sign Up
   <button type="submit">Sign up</button>
 </form>
 {% endblock content %}
+>>>>>>> master
