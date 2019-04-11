@@ -14,6 +14,10 @@ class BeeUserCreationForm(UserCreationForm):
     zipcode = forms.IntegerField(required=True)
 
     class Meta(UserCreationForm):
+        """
+        Fields for the user creation form
+        """
+
         model = BeeUser
         fields = (
             "username",
