@@ -17,16 +17,12 @@ def pastDate(date):
         
 # Form for the creation of a timeline event for a hive
 class EntryCreationForm(forms.ModelForm):   
+
     timeline_date = forms.DateField(label='Timeline Date:', 
                                     widget=forms.SelectDateWidget(years=[x for x in range(datetime.datetime.now().year,1950,-1)]),
                                     validators=[pastDate])
-    
+
     class Meta(forms.ModelForm):
         model = HiveTimeline
         fields = ["timeline_date", "brood_cells", "honey_racks", "hive_size",
                   "queen_spotted", "pests_disease", "plant_life"]
-        
-        
-        
-        
-           

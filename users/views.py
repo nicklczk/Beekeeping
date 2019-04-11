@@ -13,6 +13,13 @@ def login(request):
 
 
 def profile(request, username):
+    """
+    profile
+
+    Handles user profile view. Redirects user to login if the user is not
+    authorized to view a profile, and if the user is it gets the necessary
+    informatino and renders the proper template
+    """
     if not request.user.is_authenticated:
         print("ERROR: not authenticated")
         return redirect("login")
@@ -29,7 +36,15 @@ def profile(request, username):
 
 
 def signup(request):
+    """
+    signup
+
+    Handles account registration through Django built in
+    user auth
+    """
     if request.method == "POST":
+        # Double check the form was actually submitted, instead of the page being
+        # loaded
         form = BeeUserCreationForm(request.POST)
 
         if form.is_valid():
@@ -41,6 +56,7 @@ def signup(request):
             return redirect("home")
 
     else:
+        # If the page was just loaded, set the form to the proper one
         form = BeeUserCreationForm()
 
     return render(request, "signup.html", {"form": form})
