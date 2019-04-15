@@ -23,10 +23,12 @@
       {% endfor %}
     </div>
     <div style="" class="button-box" >
-      <a class="btn btn-primary" href="{% url 'viewhives' username%}">Return</a>
-      <a class="btn btn-primary" href="{% url 'deletehive' username pk%}">Delete</a>
-      <a class="btn btn-primary" href="{% url 'edithive' username pk%}">Edit</a>
-      <a class="btn btn-primary" href="{% url 'addtimelineentry' username pk%}">Add Timeline Event</a>
+
+    <a class="btn btn-primary" href="{% url 'viewhives' username%}">Return</a>
+    <a class="btn btn-primary" href="{% url 'deletehive' username pk%}">Delete</a>
+    <a class="btn btn-primary" href="{% url 'edithive' username pk%}">Edit</a>
+    <a class="btn btn-primary" href="{% url 'addtimelineentry' username pk%}">Add Timeline Event</a>
+    <a class="btn btn-primary" href="{% url 'createhivecsv' username pk%}">Export as CSV</a>
     </div>
     <br>
     <div style="" class="button-box" >

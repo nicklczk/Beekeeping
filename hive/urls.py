@@ -6,13 +6,17 @@ from django.contrib.auth import views as auth_views
 
 from . import views
 
+
+# All url patterns that are used by hive
 urlpatterns = [
     path("<username>/viewhives", views.viewhives, name="viewhives"),
     path("<username>/createhive", views.createhive, name="createhive"),
+    path("<username>/exportall", views.createhivescsv, name="createhivescsv"),
     path("<username>/<hive_pk>", views.viewhive, name="viewhive"),
     path("<username>/<hive_pk>/delete", views.deletehive, name="deletehive"),
     path("<username>/<hive_pk>/edit", views.edithive, name="edithive"),
     path("<username>/<hive_pk>/addentry", views.addtimelineentry, name="addtimelineentry"),
+    path("<username>/<hive_pk>/export", views.createhivecsv, name="createhivecsv"),
     path("<username>/<hive_pk>/<timeline_pk>", views.viewtimelineentry, name="viewtimelineentry"),
     path("<username>/<hive_pk>/<timeline_pk>/delete", views.deleteevent, name="deleteevent"),
     path("<username>/<hive_pk>/<timeline_pk>/edit", views.editevent, name="editevent"),

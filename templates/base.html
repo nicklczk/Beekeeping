@@ -22,17 +22,18 @@
         <a href="{% url 'home' %}">Beekeep</a>
         {% if user.is_authenticated %}
         <a href="{% url 'viewhives' user.username%}">View Hives </a>
+
         <a href="{% url 'weather' %}">Weather</a>
         <a href="{% url 'logout' %}">logout</a>
         {% else %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'signup' %}">Signup</a>
         {% endif %}
-        
+
     </div>
 
     </br>
-            
+
     <body class="w3-content" style="max-width:1200px">
         <!-- First Grid: Logo & About -->
         <div class="w3-row">
@@ -50,5 +51,3 @@
     </body>
     </div>
 </br>
-
-

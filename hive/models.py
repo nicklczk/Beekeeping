@@ -3,6 +3,7 @@ from django.db import models
 from django.db import models
 from django.utils import timezone
 
+# Model that represents a hive
 class Hive(models.Model):
     hive_name = models.CharField(max_length=200)
     user = models.CharField(max_length=200)
@@ -10,6 +11,7 @@ class Hive(models.Model):
     def __str__(self):
         return self.hive_name
     
+# Model that represents a timeline event for a hive
 class HiveTimeline(models.Model):
     hive_name = models.CharField(max_length=200)
     hive_key = models.IntegerField(default=0)
