@@ -304,14 +304,15 @@ def editevent(request, username, hive_pk, timeline_pk):
         },
     )
 
-
+# Adds a hive to a csv file
 def createhivecsvresponse(request, username, hive_pk, response):
     hive = Hive.objects.get(pk=hive_pk)
-    # Create the HttpResponse object with the appropriate CSV header.
     response["Content-Disposition"] = (
         'attachment; filename="' + hive.hive_name + '".csv"'
     )
     writer = csv.writer(response)
+    
+    # Add the hive information and the information for all of the events associated with this hive
     writer.writerow([hive.hive_name, hive.user, hive.creation_date])
     try:
         entries = HiveTimeline.objects.filter(hive_key=hive_pk)
@@ -334,16 +335,16 @@ def createhivecsvresponse(request, username, hive_pk, response):
     writer.writerow([])
     return response
 
-
+# Creates a csv file for a given hive
 def createhivecsv(request, username, hive_pk):
-    # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type="text/csv")
-
     return createhivecsvresponse(request, username, hive_pk, response)
 
-
+# Creates a csv file for all hives for a user
 def createhivescsv(request, username):
     response = HttpResponse(content_type="text/csv")
+    
+    # Get all hives and add each of them to the csv
     try:
         hives = Hive.objects.filter(user=request.user.username)
     except Hive.DoesNotExist:
