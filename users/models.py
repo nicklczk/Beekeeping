@@ -12,6 +12,7 @@ class BeeUser(AbstractUser):
     Extends Django AbstractUser which provides access to common
     default values, such as username, email, etc
     """
+
     zipcode = models.SmallIntegerField(default="00000")
 
     def __str__(self):

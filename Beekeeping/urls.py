@@ -26,5 +26,5 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path("users/", include("django.contrib.auth.urls")),
     path("hives/", include("hive.urls")),
-    path("weather/", include("weather.urls"))
+    path("weather/", include("weather.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
