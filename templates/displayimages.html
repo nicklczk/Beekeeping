@@ -5,7 +5,7 @@
 
 
 {% block title %}
-Upload Image
+View Images
 {% endblock title %}
 
 {% block content %}
@@ -14,7 +14,9 @@ Upload Image
 
     {% for image in images %}
             <div class="col-md-4">
+              <a href="{% url 'viewimage' username hive_pk timeline_pk image.pk%}">
                      <img src="{{ image.img.url }}"class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+              </a>
             </div>
     {% endfor %}
 

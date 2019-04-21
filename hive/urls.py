@@ -42,5 +42,15 @@ urlpatterns = [
         "<username>/<hive_pk>/<timeline_pk>/images",
         views.viewimages,
         name="viewimages",
-    ),     
+    ),   
+    path(
+        "<username>/<hive_pk>/<timeline_pk>/images/<img_pk>",
+        views.viewimage,
+        name="viewimage",
+    ),   
+    path(
+        "<username>/<hive_pk>/<timeline_pk>/images/<img_pk>/delete",
+        views.deleteimage,
+        name="deleteimage",
+    ),        
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

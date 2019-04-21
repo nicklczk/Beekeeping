@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/bootstrap.min.css' %}">
+
+
+{% block title %}
+View Image
+{% endblock title %}
+
+{% block content %}
+<h2>View Image</h2>
+<body>
+    <div class="col-md-4">
+        <img src="{{ image.img.url }}"class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+    </div>
+    <a class="btn btn-primary" href="{% url 'viewimages' username hive_pk timeline_pk%}">Return</a>
+    <a class="btn btn-primary" href="{% url 'deleteimage' username hive_pk timeline_pk image.pk%}">Delete</a>
+</body>
+{% endblock content %}

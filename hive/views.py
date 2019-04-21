@@ -283,6 +283,7 @@ def editevent(request, username, hive_pk, timeline_pk):
             new_timeline.hive_key = timeline.hive_key
             new_timeline.hive_name = timeline.hive_name
             new_timeline.save()
+            HiveTimeline.objects.filter(timelime_key=timeline_pk).update(timeline_key=new_timeline.pk)
             return redirect("viewtimelineentry", username, hive_pk, new_timeline.pk)
     else:
         # Create a form with the initial entries as the original data
@@ -387,4 +388,31 @@ def viewimages(request, username, hive_pk, timeline_pk):
             images = []        
             
         return render(request, 'displayimages.html', 
-                       {'images' : images}) 
+                       {'images' : images,
+                        'username' : username,
+                        'hive_pk' : hive_pk,
+                        'timeline_pk' : timeline_pk}) 
+    
+# Views a specific image
+def viewimage(request, username, hive_pk, timeline_pk, img_pk):
+        try:
+            image = Image.objects.get(pk=img_pk)
+        except HiveTimeline.DoesNotExist:
+            image = []        
+            
+        return render(request, 'viewimage.html', 
+                       {'image' : image,
+                        'username' : username,
+                        'hive_pk' : hive_pk,
+                        'timeline_pk' : timeline_pk})     
+    
+# Deletes a selected image
+def deleteimage(request, username, hive_pk, timeline_pk, img_pk):
+    # Redirect the user to the login if the user is not logged in
+    if not request.user.is_authenticated:
+        print("ERROR: not authenticated")
+        return redirect("login")
+    else:
+        # Delete the hive from the database
+        Image.objects.filter(pk=img_pk).delete()
+        return redirect("viewimages", username, hive_pk, timeline_pk)
