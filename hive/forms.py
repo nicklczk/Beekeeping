@@ -32,6 +32,7 @@ class EntryCreationForm(forms.ModelForm):
         model = HiveTimeline
         fields = [
             "timeline_date",
+            "temperature",
             "brood_cells",
             "honey_racks",
             "hive_size",

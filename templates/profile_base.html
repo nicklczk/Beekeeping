@@ -1,39 +1,16 @@
-<!-- templates/home.html -->
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Beekeep</title>
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'home/css/bootstrap.min.css' %}">
-</head>
-<body>
-  <main>
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="nav navbar center-block col-lg-7" style="float: none;">
-        <a class="navbar-brand" href="{% url 'home' %}">Beekeep</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav nav nav-pills">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'viewhives' username%}">View Hives</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <div class="row">
-      <div class="center-block col-lg-7" style="float: none;">
-        <p> Hi, {{ first_name }} {{ last_name }}</p>
-        <p>Your username is {{ username }}</p>
-        <p>Your email is current set to: {{ email }}</p>
-        <p>Your zipcode is set to: {{ zipcode }}</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+<!-- templates/profile_base.html -->
+{% extends "base.html" %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/bootstrap.min.css' %}">
+
+{% block title %}
+<title>Beekeep</title>
+{% endblock title %}
+
+{% block content %}
+<p> Hi, {{ first_name }} {{ last_name }}</p>
+<p>Your username is {{ username }}</p>
+<p>Your email is current set to: {{ email }}</p>
+<p>Your zipcode is set to: {{ zipcode }}</p>
+{% endblock content %}

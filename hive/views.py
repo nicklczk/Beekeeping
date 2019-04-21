@@ -58,6 +58,11 @@ def graphdata(request, username, hive_pk, data_type):
             x.append(entry.timeline_date)
             y.append(entry.plant_life)
             x_label = "Plant Life"
+    elif data_type == "temperature":
+        for entry in entries:
+            x.append(entry.timeline_date)
+            y.append(entry.temperature)
+            x_label = "Temperature"
 
     # Create a graph using the data and display it
     plt.plot(x, y)
@@ -223,6 +228,7 @@ def viewtimelineentry(request, username, hive_pk, timeline_pk):
             "timeline_pk": timeline.pk,
             "hive_pk": hive_pk,
             "timeline_date": timeline.timeline_date,
+            "temperature": timeline.temperature,
             "brood_cells": timeline.brood_cells,
             "honey_racks": timeline.honey_racks,
             "hive_size": timeline.hive_size,
@@ -257,6 +263,7 @@ def editevent(request, username, hive_pk, timeline_pk):
                 "hive_name": timeline.hive_name,
                 "creation_date": timeline.creation_date,
                 "timeline_date": timeline.timeline_date,
+                "temperature": timeline.temperature,
                 "brood_cells": timeline.brood_cells,
                 "honey_racks": timeline.honey_racks,
                 "hive_size": timeline.hive_size,
@@ -284,6 +291,7 @@ def editevent(request, username, hive_pk, timeline_pk):
                 "hive_name": timeline.hive_name,
                 "creation_date": timeline.creation_date,
                 "timeline_date": timeline.timeline_date,
+                "temperature": timeline.temperature,
                 "brood_cells": timeline.brood_cells,
                 "honey_racks": timeline.honey_racks,
                 "hive_size": timeline.hive_size,
@@ -324,6 +332,7 @@ def createhivecsvresponse(request, username, hive_pk, response):
         writer.writerow(
             [
                 entry.timeline_date,
+                entry.temperature,
                 entry.brood_cells,
                 entry.honey_racks,
                 entry.hive_size,
