@@ -74,10 +74,11 @@ def graphdata(request, username, hive_pk, data_type):
     canvas.draw()
     pilImage = PIL.Image.frombytes(
         "RGB", canvas.get_width_height(), canvas.tostring_rgb()
-    )
-    pilImage.show()
+    )    
     plt.close()
-    return redirect("viewhive", username, hive_pk)
+    response = HttpResponse(content_type='image/jpg')
+    pilImage.save(response, "JPEG")
+    return response
 
 
 # Shows all of the user's hives to the user
