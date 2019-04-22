@@ -8,7 +8,10 @@ from .forms import CityForm
 
 
 def index(request):
-    cities = City.objects.filter(user=request.user.username)  # return all the cities in the database for this user
+    try:
+        cities = City.objects.filter(user=request.user.username)  # return all the cities in the database for this user
+    except City.DoesNotExist:
+        cities = []
 
     url = "http://api.openweathermap.org/data/2.5/weather?zip={},us&units=imperial&appid=ac21c54544386aa281450464be00a604"
 
