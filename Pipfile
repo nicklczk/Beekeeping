@@ -5,14 +5,19 @@ name = "pypi"
 
 [packages]
 django = "*"
-"psycopg2-binary" = "*"
-"psycopg2" = "*"
 matplotlib = "*"
-pillow = "*"
 requests = "*"
+gunicorn = "*"
+pillow = "*"
+psycopg2-binary = "*"
+psycopg2 = "*"
 
 [dev-packages]
 flake8 = "*"
+v = {editable = true,version = "*"}
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
