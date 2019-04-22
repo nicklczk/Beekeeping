@@ -65,7 +65,10 @@ def graphdata(request, username, hive_pk, data_type):
             x_label = "Temperature"
 
     # Create a graph using the data and display it
-    plt.plot(x, y)
+    fig, ax = plt.subplots()
+    ax.plot_date(x, y, marker='', linestyle='-')
+
+    fig.autofmt_xdate()
     ylabel(x_label)
     xlabel("Time")
     title(x_label + " vs Time")
@@ -74,7 +77,7 @@ def graphdata(request, username, hive_pk, data_type):
     canvas.draw()
     pilImage = PIL.Image.frombytes(
         "RGB", canvas.get_width_height(), canvas.tostring_rgb()
-    )    
+    )
     plt.close()
     response = HttpResponse(content_type='image/jpg')
     pilImage.save(response, "JPEG")
