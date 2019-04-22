@@ -284,7 +284,10 @@ def editevent(request, username, hive_pk, timeline_pk):
             new_timeline.hive_key = timeline.hive_key
             new_timeline.hive_name = timeline.hive_name
             new_timeline.save()
-            HiveTimeline.objects.filter(timelime_key=timeline_pk).update(timeline_key=new_timeline.pk)
+            try:
+                Image.objects.filter(timelime_key=timeline_pk).update(timeline_key=new_timeline.pk)
+            except:
+                images = []
             return redirect("viewtimelineentry", username, hive_pk, new_timeline.pk)
     else:
         # Create a form with the initial entries as the original data
