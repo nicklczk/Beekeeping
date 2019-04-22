@@ -8,13 +8,15 @@ from .forms import CityForm
 
 
 def index(request):
-    cities = City.objects.all()  # return all the cities in the database
+    cities = City.objects.filter(user=request.user.username)  # return all the cities in the database for this user
 
     url = "http://api.openweathermap.org/data/2.5/weather?zip={},us&units=imperial&appid=ac21c54544386aa281450464be00a604"
 
     if request.method == "POST":  # only true if form is submitted
         form = CityForm(request.POST)  # add actual request data to form for processing
-        form.save()  # will validate and save if validate
+        city = form.save(commit=False)  # will validate and save if validate
+        city.user = request.user.username
+        city.save()  # will validate and save if validate
 
     form = CityForm()
 
