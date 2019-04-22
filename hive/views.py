@@ -285,8 +285,8 @@ def editevent(request, username, hive_pk, timeline_pk):
             new_timeline.hive_name = timeline.hive_name
             new_timeline.save()
             try:
-                Image.objects.filter(timelime_key=timeline_pk).update(timeline_key=new_timeline.pk)
-            except:
+                Image.objects.filter(timeline_key=timeline_pk).update(timeline_key=new_timeline.pk)
+            except Image.DoesNotExist:
                 images = []
             return redirect("viewtimelineentry", username, hive_pk, new_timeline.pk)
     else:
