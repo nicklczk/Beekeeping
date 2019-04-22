@@ -1,6 +1,6 @@
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: #ff6a00;
   overflow: hidden;
 }
 
@@ -16,7 +16,7 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #ffa566;
   color: black;
 }
 

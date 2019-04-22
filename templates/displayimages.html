@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/bootstrap.min.css' %}">
+
+
+{% block title %}
+Upload Image
+{% endblock title %}
+
+{% block content %}
+<h2>View Images</h2>
+<body>
+
+    {% for image in images %}
+            <div class="col-md-4">
+                     <img src="{{ image.img.url }}"class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+            </div>
+    {% endfor %}
+
+</body>
+{% endblock content %}

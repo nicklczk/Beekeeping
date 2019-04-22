@@ -1,5 +1,5 @@
 from django import forms
-from .models import Hive, HiveTimeline
+from .models import Hive, HiveTimeline, Image
 
 import datetime
 
@@ -32,6 +32,7 @@ class EntryCreationForm(forms.ModelForm):
         model = HiveTimeline
         fields = [
             "timeline_date",
+            "temperature",
             "brood_cells",
             "honey_racks",
             "hive_size",
@@ -39,3 +40,10 @@ class EntryCreationForm(forms.ModelForm):
             "pests_disease",
             "plant_life",
         ]
+
+
+class ImageForm(forms.ModelForm): 
+      
+    class Meta: 
+        model = Image 
+        fields = ['img'] 

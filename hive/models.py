@@ -28,5 +28,12 @@ class HiveTimeline(models.Model):
     pests_disease = models.BooleanField()
     plant_life = models.BooleanField()
 
+    temperature = models.DecimalField(default=0, decimal_places=2, max_digits=4)
+
     def __str__(self):
         return str(self.timeline_date.strftime("%Y-%m-%d"))
+    
+# models.py 
+class Image(models.Model): 
+    timeline_key = models.IntegerField(default=0)
+    img = models.ImageField(upload_to='images/')     

@@ -31,12 +31,13 @@
     <a class="btn btn-primary" href="{% url 'createhivecsv' username pk%}">Export as CSV</a>
     </div>
     <br>
-    <div style="" class="button-box" >
+    <div style="" >
       <a class="btn btn-primary" href="{% url 'graphdata' username pk 'brood_cells'%}">Graph Brood Cells</a>
       <a class="btn btn-primary" href="{% url 'graphdata' username pk 'honey_racks'%}">Graph Honey Racks</a>
       <a class="btn btn-primary" href="{% url 'graphdata' username pk 'hive_size'%}">Graph Hive Size</a>
       <a class="btn btn-primary" href="{% url 'graphdata' username pk 'queen_spotted'%}">Graph Queen Spotted</a>
       <a class="btn btn-primary" href="{% url 'graphdata' username pk 'pests_disease'%}">Graph Pests/Disease</a>
       <a class="btn btn-primary" href="{% url 'graphdata' username pk 'plant_life'%}">Graph Plant Life</a>
+      <a class="btn btn-primary" href="{% url 'graphdata' username pk 'temperature'%}">Graph Temperature</a>
     </div>
 {% endblock content %}

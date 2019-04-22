@@ -33,4 +33,14 @@ urlpatterns = [
     path(
         "<username>/<hive_pk>/<data_type>/graphdata", views.graphdata, name="graphdata"
     ),
+    path(
+        "<username>/<hive_pk>/<timeline_pk>/upload",
+        views.uploadimage,
+        name="uploadimage",
+    ),    
+    path(
+        "<username>/<hive_pk>/<timeline_pk>/images",
+        views.viewimages,
+        name="viewimages",
+    ),     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
