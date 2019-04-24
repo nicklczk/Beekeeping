@@ -23,7 +23,7 @@ createdb beekeeping
 
 ### Running 
 
-``
+```
 pipenv shell
 python manage.py createmigrations
 python manage.py migrate
