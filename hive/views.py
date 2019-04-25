@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-import datetime
+from django.utils import timezone
 import operator
 import matplotlib
 
@@ -111,7 +111,7 @@ def createhive(request, username):
         if form.is_valid():
             hive = form.save(commit=False)
             hive.user = request.user.username
-            hive.creation_date = datetime.datetime.now()
+            hive.creation_date = timezone.now()
             hive.save()
             return redirect("viewhives", username)
     else:
@@ -197,8 +197,8 @@ def addtimelineentry(request, username, hive_pk):
         if form.is_valid():
             timeline = form.save(commit=False)
             timeline.user = request.user.username
-            timeline.creation_date = datetime.datetime.now()
-            timeline.edited_date = datetime.datetime.now()
+            timeline.creation_date = timezone.now()
+            timeline.edited_date = timezone.now()
             timeline.hive_name = hive.hive_name
             timeline.hive_key = hive.pk
             timeline.save()
@@ -283,7 +283,7 @@ def editevent(request, username, hive_pk, timeline_pk):
             new_timeline = form.save(commit=False)
             new_timeline.user = request.user.username
             new_timeline.creation_date = timeline.creation_date
-            new_timeline.edited_date = datetime.datetime.now()
+            new_timeline.edited_date = timezone.now()
             new_timeline.hive_key = timeline.hive_key
             new_timeline.hive_name = timeline.hive_name
             new_timeline.save()
