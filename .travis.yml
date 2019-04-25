@@ -13,13 +13,9 @@ addons:
 
 before_install:
   - pip install pipenv
-  - npm install -g npm@"^6.4.0"
 
 install:
-  - pipenv install --dev --deploy
+  - pipenv install --dev
   
-before_script:
-  - black . --check --exclude node_modules/
-
 script: 
-  - pytest
+  - pipenv run python manage.py test
