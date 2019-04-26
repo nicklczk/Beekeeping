@@ -2,6 +2,7 @@
 # code can be found at https://github.com/PrettyPrinted/weather_app_django_scotch
 
 from django.shortcuts import render
+from django.contrib import messages
 import requests
 from .models import City
 from .forms import CityForm
@@ -30,16 +31,19 @@ def index(request):
         city_weather = requests.get(
             url.format(city)
         ).json()  # request the API data and convert the JSON to Python data types
+        try:
+            weather = {
+                "city": city,
+                "temperature": city_weather["main"]["temp"],
+                "description": city_weather["weather"][0]["description"],
+                "icon": city_weather["weather"][0]["icon"],
+            }
+            weather_data.append(weather)  # add the data for the current city into our list            
+        except KeyError:
+            City.objects.filter(name=city.name).delete()
+            messages.error(request, city.name+" Does Not Exist!")
 
-        weather = {
-            "city": city,
-            "temperature": city_weather["main"]["temp"],
-            "description": city_weather["weather"][0]["description"],
-            "icon": city_weather["weather"][0]["icon"],
-        }
-
-        weather_data.append(weather)  # add the data for the current city into our list
-
+        
     context = {"weather_data": weather_data, "form": form}
 
     return render(

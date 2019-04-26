@@ -385,10 +385,9 @@ def uploadimage(request, username, hive_pk, timeline_pk):
         form = ImageForm() 
     return render(request, 'uploadimage.html', {'form' : form}) 
   
-  
+# View all images for a timeline event
 def viewimages(request, username, hive_pk, timeline_pk):
-    if request.method == 'GET': 
-            # getting all the objects of hotel. 
+    if request.method == 'GET':  
         try:
             images = Image.objects.filter(timeline_key=timeline_pk)
         except HiveTimeline.DoesNotExist:
